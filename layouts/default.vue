@@ -5,7 +5,7 @@
     <div
       class="
         bg-gray-100
-        px-0
+        px-2
         lg:px-36
         py-4
         flex flex-row

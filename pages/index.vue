@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import PostList from '../interfaces/PostList';
-// const { data } = await useFetch<PostList>("http://localhost:82/wordpress/wp-json/wp/v2/posts?_embed=wp:featuredmedia&_fields=id,title,slug,excerpt,_links,_embedded.wp:featuredmedia");
 const {data} = await useWpApi().getPosts<PostList>();
 </script>
 <template>

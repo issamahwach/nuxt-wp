@@ -1,16 +1,32 @@
 export default () => {
   const config = useRuntimeConfig();
   const url = config.public.API_URL;
+
+  /**
+   * To reduce response payload as much as possible
+   * **/
+
   const postFields =
     "?_embed=wp:featuredmedia&_fields=id,title,slug,excerpt,_links,_embedded.wp:featuredmedia";
 
   const categoryFields = "?_fields=id,name,slug";
 
-  //Get
+  /**
+   * Standard GET request
+   * @param endpoint
+   * @returns Response
+   */
+
   const get = async <T>(endpoint: string) =>
     useFetch<T>(`${url}/wp-json/wp/v2/${endpoint}`);
 
-  //Get all Posts
+  /**
+   * GET all Posts
+   * @param categories
+   * @param page
+   * @param perPage
+   * @returns
+   */
   const getPosts = async <T>(
     categories?: number,
     page: number = 1,
@@ -23,14 +39,25 @@ export default () => {
     return get<T>(query);
   };
 
-  //Get Single Post
+  /**
+   * GET Post
+   * @param slug
+   * @returns
+   */
   const getPost = async <T>(slug: string) =>
     get<T>(`posts${postFields}&slug=${slug}`);
 
-  //Get All Categories
+  /**
+   * GET all Categories
+   * @returns
+   */
   const getCategories = async <T>() => get<T>(`categories${categoryFields}`);
 
-  //Get Single Category
+  /**
+   * GET single Category
+   * @param slug
+   * @returns
+   */
   const getCategory = async <T>(slug: string) =>
     get<T>(`categories${postFields}&slug=${slug}`);
 
