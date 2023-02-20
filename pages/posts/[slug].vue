@@ -6,10 +6,10 @@ const {data} = await useWpApi().getPost<any>(params.slug as string);
 <template>
 <div class="container">
     <div>
-        <h1 class="text-3xl text-center">{{ data[0].title.rendered }}</h1>
+        <div class="text-3xl text-center">{{ data[0].title.rendered }}</div>
         <img :src="data[0]._embedded['wp:featuredmedia'][0].source_url" class="mt-4 w-full max-h-96 object-cover"/>
     </div>
-    <p v-html="data[0].excerpt.rendered" class="mt-4"/>
+    <div v-html="data[0].excerpt.rendered" class="mt-4"/>
     
 </div>
 </template>

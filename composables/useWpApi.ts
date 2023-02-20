@@ -7,7 +7,7 @@ export default () => {
    * **/
 
   const postFields =
-    "?_embed=wp:featuredmedia&_fields=id,title,slug,excerpt,_links,_embedded.wp:featuredmedia";
+    "?_embed=wp:featuredmedia&_fields=id,title,slug,categories,excerpt,_links,_embedded.wp:featuredmedia";
 
   const categoryFields = "?_fields=id,name,slug";
 
@@ -59,7 +59,7 @@ export default () => {
    * @returns
    */
   const getCategory = async <T>(slug: string) =>
-    get<T>(`categories${postFields}&slug=${slug}`);
+    get<T>(`categories${categoryFields}&slug=${slug}`);
 
   return {
     get,

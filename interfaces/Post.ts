@@ -3,6 +3,7 @@ interface Post {
   title: text;
   excerpt: text;
   slug: string;
+  categories: number[];
   _embedded?: Thumbnail;
 }
 
